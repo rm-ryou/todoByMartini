@@ -1,6 +1,6 @@
 package model
 
 type Todo struct {
-  ID    uint
+  ID    int
   Name  string  `form:"name"`
 }
