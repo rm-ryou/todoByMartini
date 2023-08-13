@@ -3,10 +3,11 @@ package main
 import (
 
   "example.com/todoByMartini/handler"
-  _ "example.com/todoByMartini/model"
+  "example.com/todoByMartini/model"
 
   "github.com/go-martini/martini"
   "github.com/martini-contrib/render"
+  "github.com/martini-contrib/binding"
 )
 
 func main() {
@@ -14,6 +15,9 @@ func main() {
   m.Use(render.Renderer())
 
   m.Get("/", handler.Hello)
+
+  m.Get("/todos", handler.ShowTodos)
+  m.Post("/todos", binding.Form(model.Todo{}), handler.GetTodoRequest)
 
   m.Run()
 }
