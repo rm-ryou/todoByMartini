@@ -1,0 +1,25 @@
+<!-- templates/todos.tmpl -->
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>Todo App</title>
+  </head>
+  <body>
+    <form action="/todos" method="POST">
+      <input type="text" name="name" placeholder="This is the placeholder"/>
+      <input type="submit" value="send request"/>
+    </form>
+    <h2>todo list...</h2>
+    <ul>
+      {{range .}}
+      <div>
+        <form action="/todos" method="POST">
+          <input type="checkbox" id="todo" name="name" value="done"/>
+          <label for="todo">{{.Name}}</label>
+          <input type="submit" value="done"/>
+        </form>
+      </div>
+      {{end}}
+    </ul>
+  </body>
+</html>
