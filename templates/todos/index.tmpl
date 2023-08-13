@@ -1,0 +1,24 @@
+<!-- templates/todos.tmpl -->
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>Todo App</title>
+  </head>
+  <body>
+    <div>
+      <h2>New Task</h2>
+      <a href="/todos/new">New Task</a>
+    </div>
+    <h2>Todo List...</h1>
+    <ul>
+      {{range .}}
+      <div>
+        <form action="/todos/" method="POST">
+          <label>{{.Name}}</label>
+          <input type="submit" value="done"/>
+        </form>
+      </div>
+      {{end}}
+    </ul>
+  </body>
+</html>

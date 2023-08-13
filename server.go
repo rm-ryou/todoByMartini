@@ -2,8 +2,8 @@ package main
 
 import (
 
-  "example.com/todoByMartini/handler"
-  "example.com/todoByMartini/model"
+  "example.com/todoByMartini/app/handler"
+  "example.com/todoByMartini/app/model"
 
   "github.com/go-martini/martini"
   "github.com/martini-contrib/render"
@@ -16,8 +16,12 @@ func main() {
 
   m.Get("/", handler.Hello)
 
-  m.Get("/todos", handler.ShowTodos)
-  m.Post("/todos", binding.Form(model.Todo{}), handler.GetTodoRequest)
+  m.Group("/todos", func(r martini.Router) {
+    r.Get("/", handler.GetTasks)
+    r.Get("/new", handler.NewTask)
+    r.Post("/new", binding.Form(model.Todo{}), handler.GetNewTask)
+    r.Post("/", binding.Form(model.Todo{}), handler.DeleteTask)
+  })
 
   m.Run()
 }
