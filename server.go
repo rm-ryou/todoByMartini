@@ -20,7 +20,7 @@ func main() {
     r.Get("/", handler.GetTasks)
     r.Get("/new", handler.NewTask)
     r.Post("/new", binding.Form(model.Todo{}), handler.GetNewTask)
-    // r.Delete("/delete", handler.DeleteTask)
+    r.Post("/", binding.Form(model.Todo{}), handler.DeleteTask)
   })
 
   m.Run()
