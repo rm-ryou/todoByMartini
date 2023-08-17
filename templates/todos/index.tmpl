@@ -14,8 +14,8 @@
       {{range .}}
       <div>
         <form action="/todos/" method="POST">
-          <label>{{.Name}}</label>
-          <input type="submit" value="done"/>
+          <label for="todo">{{.ID}}: {{.Name}}</label>
+          <button type="submit" name="name" value="{{.Name}}">Done</button>
         </form>
       </div>
       {{end}}
