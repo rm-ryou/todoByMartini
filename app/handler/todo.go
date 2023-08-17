@@ -1,8 +1,6 @@
 package handler
 
 import (
-  "fmt"
-
   "example.com/todoByMartini/app/model"
 
   "github.com/martini-contrib/render"
@@ -20,15 +18,12 @@ func NewTask(r render.Render) {
 
 func GetNewTask(todo model.Todo, r render.Render) {
   todo.ID = len(todos)
-  fmt.Printf("len todo = %d\n", todo.ID)
   addTodo(todo)
   r.Redirect("/todos/")
 }
 
 func DeleteTask(todo model.Todo, r render.Render) {
-  fmt.Println("this is delete task func.")
-  fmt.Printf("must delete %s\n", todo.Name)
-  fmt.Printf("number is %d\n", todo.ID)
+  deleteTodo(todo)
   r.HTML(200, "todos/index", todos)
 }
 
@@ -42,4 +37,8 @@ func ShowTodos(r render.Render) {
 
 func addTodo(todo model.Todo) {
   todos = append(todos, todo)
+}
+
+func deleteTodo(todo model.Todo)  {
+  println(todo.Name)
 }
